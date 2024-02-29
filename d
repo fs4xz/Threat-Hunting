@@ -1,1 +1,1 @@
-Session 8 (eCPPTv2) - Day 8
+Session 1 (eCTHPv2) - Day 1
