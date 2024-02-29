@@ -1,176 +1,44 @@
-Session 1                    |                                                                                  Day1
-• introduction to the course |
+**Name Studint: Rakan.**
+
+**about: Course summary [eCTHPv2 By CyberHub](https://cyberhub.sa/courses/122) Instructor : [Sattam AlMohsen](https://www.linkedin.com/in/sattam-almohsen).**
+
+
+Title: 'Intro to the course'.
+
+Date: '3 march 2024 | 06:00 م - 09:00 م'
+
+Lecture #0                    |                                                                                  
+• Intro to the course |
 -----------------------------|
+Roles The course!
+![Roles The course ](https://github.com/fs4xz/Threat-Hunting/assets/83160116/c418b4ba-be74-474c-b576-16fc3140de7a)
 
-للتذكير قسائم الاختبار تُمنح للطلاب الأعلى تقييم وسيتم سحب من المشاركين في هاشتاق #سايبرهب
 
-شروط الحصول على فاوتشر:
-
-حضور جميع الجلسات المباشرة مع المدرب
-التفاعل والمشاركة مع المدرب 
-حل اختبارات التقييم التي يقيمها المدرب 
-متابعة مقاطع الدورات في INE وحل جميع اللابات و الكويزات
-
-ممكن CTF بعد الدورة
-
-العدد 20 فاوتشر
-وفيه سحب من هاشتاق سايبرهب
-اهم شي ماعندك غياب
-
-CTF راح يكون نفس مستوى الكورس
-اون لاين الCTF
 
 
 -----------------------------------
-كورس ejpt راح نشرح لكن الاساسي انه نحل فقط اللابات 
+كورس eCTHPv2 : 
 
-راح نبداء باول سكشن
-Assessment Methodologies : inromation gathering
-
-اللابات نحلها مع بعض
-طبعا بعض اللابات مكرره يعني تحصلها في PTS and PTP 
-ف اللابات المكرره ماراح نحلها مره ثانيه فقط مره وحده
+أول محاضرة تتحدث عن :
 
 ------------------------------------
-Passive | active , information gathering
 
-Passive : without interact with target
-Active : interact with target
 
-nmap : كانو يستخدمونها لحل المشاكل على الشبكات
-
-اول لاب راح نحله بيكون عن الـ nmap
 
 ------------------------------------
-طبعا الان نبداء اللاب
-بتحصل النوت باد مفتوحه او بسطح المكتب فيه ايبي التارقت
 
-المطلوب نسوي سكان على التارقت 
-باستخدام nmap tool
 
-nmap
-وظيفتها تفحص لك الشبكة مب لازم يكون ايبي محدد
-
-[nmap --help] to open documentation for this utility
-[man nmap] manullay
-طبعا راح يعتبر
-Active scan 
-لانه بنكون على اتصال مباشر مع التارقت
-[nmap $ip_target] 'command to do basic scan'
-
-طبعا عندنا التارقت بنفحصه
-[10.6.17.68] 
-ويختلف كل شخص له تارقت معين
-[cat /root/desktop/target]
-
-طبعا فيه فايروول ويسوي بلوك لل ICMP requests
-فبنستخدم -Pn عشان مايرسل البنق 
-[nmap -Pn 10.6.17.68]
-
-الان نبي نحدد ايش اصدار الخدمة الي شغاله على البورتات
-[nmap -sV -Pn 10.6.17.68]
-
-الان حصلنا كل الخدمات الموجوده مع اصداراتها
-
-نقدر نحدد بورتات معينه او كامل البورتات
-[nmap -sV -Pn -p 80,135,3389 10.6.17.68] هنا نحدد بورتات معينه
-[nmap -sV -Pn -p- 10.6.17.68] هنا نفحص كل البورتات
-
-طبعا فيه ادوات بديله لل nmap 
-ف عندنا مثل rustscan اسرع بكثير
 
 --------------------------------------------------------------
-Assessment Methodologies: Footprinting & Scanning 
-
-راح ناخذ لاب من هنا اسمه
-'Scan The Server 1'
-
-لو ماعطانا التارقت راح نفحص كامل الشبكة
-[ip a] عشان احصل رينج الشبكة 
-[nmap -sV -Pn 192.7.218.2/24 -v] 
-- عشان افحص اشهر 1000 بورت
-- (-v) verbose اذا كان الفحص بيطول وتبي تشوف النتيجة مباشره لكل خطوه
-
-نفحص كل البورتات عشان ماطلعنا لنا شي
-[nmap -sV -Pn -p- 192.7.218.2/24]
 
 ----------------------------------------------------------------
-Windows Recon: SMB Nmap Scripts
 
-هذي الخدمة اسمها
-network file sharing protocol
-يعني فقط يكون بيننا اتصال وراح اقدر ارسلك واستقبل منك ملفات
-
- طبعا عنده وظيفه معينه والي هي مشاركة الملفات
-تحفظ ملفات و تقرا ملفات وترسل ملفات وتستقبل ملفات
-
-طبعا نسوي ping
-عشان نشوف التارقت هل هو حي او لا
-[ping -c 3 10.6.23.230]
--c عشان تحدد عدد الريكوستات الي يرسلها
-
-TTL :
-64 = linux
-125 =  windows
-واعلى من 125 مثلا 200 وشوي احيانا يكون راوتر او فاير ول
-
-لكن مو شي دقيق.
-
-
-SMB 
-شغال على بورت 445 
-
---script 
-عندنا هذا الargument
-يجي سكربتات مع نفس اداة nmap 
-وتقدر تسوي سكربتاتك الخاصة اكيد وتظيفها بالمسار حق السكربتات الي داخل nmap
-
-script to list the supported protocols and dialects of an SMB serve.
-[nmap -p445 --script smb-protocols 10.6.23.230] نحدد انه يفحص بورت معين وبسكربت معين
-
-الان بنجرب سكربت اخر
-وظيفته يعلمك السيشن الموجوده او اليوزر الموجود حاليا متصل
-[nmap -p445 --script smb-sessions 10.6.23.230]
-
-وهذا السكربت بيطلع لك المجلدات الموجوده والصلاحيات لكل مجلد
-[nmap -p445 --script smb-enum-shares 10.6.23.230]
-
-الحين عشان نشوف ايش اليوزرز الموجودين في الويندوز
-Enumerate the windows users on a target machine
-[nmap -p445 --script smb-enum-users --script-args smbusername=administrator,smbpassword=smbserver_771 10.6.23.230]
-
-هذا عشان نعرف من حاول يدخل الملف يعطيك كذا نظره على الملفات او المجلدات الموجوده كم مره احد حاول يدخل وكم مره واحد حاول يدخل وفشل الخ..
-السكربتات كثيره مره لكن هذي ابرز السكربتات بما يخص بروتوكول مشاركة الملفات SMB
-
-[nmap -p445 --script smb-server-stats --script-args smbusername=administrator,smbpassword=smbserver_771 10.6.23.230]
-
-هذا سكربت يعطينا حاله كامله عن البورت هذا
-وكذالك الباسورد يعطيك اذا له شروط معينه و يعطيك اليوزرز يختصر عليك يعني الي السكربتات الي فوق بسكربت واحد
-Enumerating available domains on a target machine
-[nmap -p445 --script smb-enum-domains --script-args smbusername=administrator,smbpassword=smbserver_771 10.6.23.230]
-
-وهذا سكربت مخصص لفحص الخدمات الي تجيك اذا دخلت ال SMB
-ف يستعرض لك كل الخدمات الي تكون معك اذا كنت في اتصال مع SMB
-[nmap -p445 --script smb-enum-services --script-args smbusername=administrator,smbpassword=smbserver_771 10.6.23.230]
-
-وهذا سكربت يستخدم عشان ينفذ لك امر ls
-داخل المجلدات الي حصلتها ويعطيك الملفات الي بداخل المجلد
-[nmap -p445 --script smb-enum-shares,smb-ls --script-args smbusername=administrator,smbpassword=smbserver_771 10.6.23.230]
-
-الان عرفنا وش يدعم هذا البروتوكول والاصدار
-وعرفنا اليوزر المتصلين مباشرة وعرفنا المجلدات وصلاحيات كل مجلد وش يقدر يسوي مثلا يقرا ويكتب او فقط يكتب الخ..
-و اخيرا حصلنا اليوزرز الموجودين على الويندوز
-
-طبعنا نفذنا السكربتات الي فوق يعتبر هذا اشهر سكربتات بروتوكول SMB
-فيه كثير سكربتات اخرى ف Google it :)
-
-
-HomeWork#1
-من اول الدورة الى لاب scan the server 1
-مطلوبه الفديوهات واللابات وكذالك الكويزات
+HW#1
 
 
 
-Tw: @s4cript
-Tw Lecturer: @0xNawaF1
-Tw by: @cyberhub
+[Accounts in X:@r00tfzv:]( https://twitter.com/r00tfzv).
+
+[Accounts in X: Lecturer:@HunterxSatam]( https://twitter.com/HunterxSatam).
+
+[Accounts in X: by @cyberhub ](https://twitter.com/CyberhubSa).
